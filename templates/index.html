@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Coach</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body{
+            background:
+                radial-gradient(circle at top right,#1d4ed8 0%,transparent 25%),
+                radial-gradient(circle at bottom left,#2563eb 0%,transparent 20%),
+                #050816;
+        }
+
+        .glass{
+            background:rgba(15,23,42,.72);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow:
+                0 0 30px rgba(59,130,246,.08),
+                inset 0 1px 0 rgba(255,255,255,.04);
+        }
+
+        .glow{
+            box-shadow:
+                0 0 15px rgba(59,130,246,.35),
+                0 0 35px rgba(59,130,246,.15);
+        }
+
+        input::placeholder{
+            color:#94a3b8;
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen flex items-center justify-center p-8">
+
+<div class="w-full max-w-3xl glass rounded-3xl p-10">
+
+    <div class="text-center mb-10">
+
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-400/30 mb-5">
+            <span class="text-3xl">🎓</span>
+        </div>
+
+        <h1 class="text-5xl font-extrabold tracking-tight">
+            AI <span class="text-blue-400">Study Coach</span>
+        </h1>
+
+        <p class="text-slate-400 mt-3 text-lg">
+            Your intelligent learning companion powered by AI.
+        </p>
+
+    </div>
+
+    <form action="/" method="POST" class="space-y-5">
+
+        <input
+            type="text"
+            name="topic"
+            placeholder="Ask anything... Physics, Python, History..."
+            class="w-full rounded-2xl border border-slate-700 bg-slate-900/70 px-6 py-5
+                   focus:outline-none focus:ring-2 focus:ring-blue-500
+                   focus:border-blue-500 transition duration-300 text-lg"
+        >
+
+        <button
+            type="submit"
+            class="w-full rounded-2xl py-5 font-bold text-lg
+                   bg-gradient-to-r from-blue-600 to-indigo-600
+                   hover:from-blue-500 hover:to-indigo-500
+                   transition-all duration-300 glow"
+        >
+            ⚡ Generate Study Plan
+        </button>
+
+    </form>
+
+    {% if response %}
+    <div class="mt-10 glass rounded-2xl p-7 border border-blue-500/20">
+        <h2 class="text-xl font-semibold text-blue-300 mb-4">
+            📘 AI Response
+        </h2>
+
+        <div class="whitespace-pre-wrap text-slate-200 leading-8">
+            {{ response }}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
